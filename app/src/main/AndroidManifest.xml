@@ -18,6 +18,7 @@
         <activity
             android:name=".activity.FirstActivity"
             android:exported="false" />
+
         <activity
             android:name=".activity.SplashScreenActivity"
             android:exported="true">
@@ -27,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.SignInActivity"
             android:exported="true" />
@@ -41,6 +43,13 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.WithGoogleActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".activity.WithFacebookActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

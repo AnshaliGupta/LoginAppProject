@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class SignInActivity extends AppCompatActivity {
     private String  USER_EMAIL="anshaligupta@gmail.com";
     private String USER_PASSWORD="232151";
     private PreferenceHelper preferenceHelper;
+    private ImageView signInWithGoogle, signInWithFacebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,22 @@ public class SignInActivity extends AppCompatActivity {
                         Toast.makeText(SignInActivity.this, "Incorrect Login Details", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        signInWithGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent googleintent = new Intent(SignInActivity.this, WithGoogleActivity.class);
+                startActivity(googleintent);
+            }
+        });
+
+        signInWithFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent googleintent = new Intent(SignInActivity.this, WithGoogleActivity.class);
+                startActivity(googleintent);
             }
         });
 
@@ -81,5 +99,7 @@ public class SignInActivity extends AppCompatActivity {
         demoPasswordEditText = findViewById(R.id.demo_password_input);
         demoLoginButton = findViewById(R.id.demo_login_button);
         demoSignUpView = findViewById(R.id.demo_sign_up_link);
+        signInWithGoogle = findViewById(R.id.sign_in_google);
+        signInWithFacebook = findViewById(R.id.sign_in_facebook);
     }
 }
