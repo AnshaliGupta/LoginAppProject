@@ -44,7 +44,8 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="-15dp"
                 android:drawableStart="@drawable/ic_action_email"
-                android:hint="@string/demoEmail_input" />
+                android:hint="@string/demoEmail_input"
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

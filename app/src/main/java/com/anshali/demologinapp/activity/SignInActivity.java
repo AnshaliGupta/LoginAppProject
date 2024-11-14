@@ -65,8 +65,8 @@ public class SignInActivity extends AppCompatActivity {
         signInWithFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent googleintent = new Intent(SignInActivity.this, WithGoogleActivity.class);
-                startActivity(googleintent);
+                Intent facebookintent = new Intent(SignInActivity.this, WithFacebookActivity.class);
+                startActivity(facebookintent);
             }
         });
 
