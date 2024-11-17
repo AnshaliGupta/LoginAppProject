@@ -58,4 +58,6 @@
     <string name="demo_no_account_text">Don\'t have an account?</string>
     <string name="demo_sign_up">Sign up</string>
     <string name="choose_an_account">Choose an account</string>
+    <string name="terms_conditions"><![CDATA[terms & conditions]]></string>
+    <string name="terms_conditions1"><![CDATA[Terms & Conditions]]></string>
 </resources>

@@ -40,6 +40,15 @@ public class PreferenceHelper {
         demoeditor.apply();
     }
 
+    public void saveSignUp(String name, String email, String pwd) {
+        SharedPreferences.Editor demoeditor = demoPreferences.edit();
+        demoeditor.putString(NAME, name);
+        demoeditor.putString(EMAIL, email);
+        demoeditor.putString(PWD, pwd);
+        //demoeditor.putBoolean(IS_USER_LOGGED_IN, true);
+        demoeditor.apply();
+    }
+
     public boolean IsUserLoggedIn() {
         return demoPreferences.getBoolean(IS_USER_LOGGED_IN,false);
     }
