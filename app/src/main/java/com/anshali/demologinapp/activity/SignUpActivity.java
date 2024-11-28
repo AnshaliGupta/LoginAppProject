@@ -46,8 +46,9 @@ public class SignUpActivity extends AppCompatActivity {
                     preferenceHelper.saveString("User_Password", password); */
                     preferenceHelper.saveSignUp(name, email, password);
                     Intent signUpIntent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    signUpIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(signUpIntent);
-                    finish();
+                    finishAffinity();
                 } else {
                     Toast.makeText(SignUpActivity.this, "Incorrect SignUp Details", Toast.LENGTH_SHORT).show();
                 }

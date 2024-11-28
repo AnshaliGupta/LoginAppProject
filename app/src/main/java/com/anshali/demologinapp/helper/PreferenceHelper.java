@@ -5,10 +5,10 @@ public class PreferenceHelper {
     private static PreferenceHelper demopreferenceHelper = null;
     private SharedPreferences demoPreferences;
     private Context democontext;
-    private static final String EMAIL = "email";
-    private static final String PWD = "password";
-    private static final String NAME = "name";
-    private static final String IS_USER_LOGGED_IN = "is_user_logged_in";
+    public static final String EMAIL = "email";
+    public static final String PWD = "password";
+    public static final String NAME = "name";
+    public static final String IS_USER_LOGGED_IN = "is_user_logged_in";
 
     public PreferenceHelper(Context democontext1) {
         this.democontext = democontext1;
@@ -34,8 +34,8 @@ public class PreferenceHelper {
 
     public void saveLogin(String email, String pwd) {
         SharedPreferences.Editor demoeditor = demoPreferences.edit();
-        demoeditor.putString(EMAIL, email);
-        demoeditor.putString(PWD, pwd);
+        /*demoeditor.putString(EMAIL, email);
+        demoeditor.putString(PWD, pwd);*/
         demoeditor.putBoolean(IS_USER_LOGGED_IN, true);
         demoeditor.apply();
     }
@@ -45,7 +45,7 @@ public class PreferenceHelper {
         demoeditor.putString(NAME, name);
         demoeditor.putString(EMAIL, email);
         demoeditor.putString(PWD, pwd);
-        //demoeditor.putBoolean(IS_USER_LOGGED_IN, true);
+        demoeditor.putBoolean(IS_USER_LOGGED_IN, true);
         demoeditor.apply();
     }
 
@@ -55,7 +55,7 @@ public class PreferenceHelper {
 
     public void logout() {
         SharedPreferences.Editor demoeditor = demoPreferences.edit();
-        demoeditor.clear();
+        demoeditor.putBoolean(IS_USER_LOGGED_IN, false);
         demoeditor.apply();
     }
 }

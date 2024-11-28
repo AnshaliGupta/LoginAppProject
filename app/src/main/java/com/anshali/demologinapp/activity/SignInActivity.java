@@ -21,32 +21,43 @@ public class SignInActivity extends AppCompatActivity {
     private TextInputEditText demoEmailEditText, demoPasswordEditText;
     private MaterialButton demoLoginButton;
     private TextView demoSignUpView;
-    private String  USER_EMAIL="anshaligupta@gmail.com";
-    private String USER_PASSWORD="232151";
+    //private String  USER_EMAIL="anshaligupta@gmail.com";
+    //private String USER_PASSWORD="123456";
     private PreferenceHelper preferenceHelper;
     private ImageView signInWithGoogle, signInWithFacebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign);
 
         // Initialize PreferenceHelper
         preferenceHelper = PreferenceHelper.getInstance(this);
+
+        if(preferenceHelper.IsUserLoggedIn()) {
+            Intent homeIntent = new Intent(this, HomeActivity.class);
+            startActivity(homeIntent);
+            finish();
+        } else {
+            setContentView(R.layout.activity_sign);
+        }
 
         initViews();
 
         demoLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String email=String.valueOf(demoEmailEditText.getText());
-                String password=String.valueOf(demoPasswordEditText.getText());
+            public void onClick(View view) {
+                String email = String.valueOf(demoEmailEditText.getText());
+                String password = String.valueOf(demoPasswordEditText.getText());
+                String savedEmail = preferenceHelper.getString(PreferenceHelper.EMAIL);
+                String savedPassword = preferenceHelper.getString(PreferenceHelper.PWD);
+
                 if(validData(email, password)) {
-                    if(email.equals(USER_EMAIL) && password.equals(USER_PASSWORD)) {
+                    if(email.equals(savedEmail) && password.equals(savedPassword)) {
                         preferenceHelper.saveLogin(email, password);
                         Intent loginIntent=new Intent(SignInActivity.this,HomeActivity.class);
+                        loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(loginIntent);
-                        finish();
+                        finishAffinity(); //finish all previous activities
                     } else {
                         Toast.makeText(SignInActivity.this, "Incorrect Login Details", Toast.LENGTH_SHORT).show();
                     }
